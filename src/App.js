@@ -8,14 +8,22 @@ function App() {
   axios.defaults.baseURL = "http://192.168.0.14:5000";
 
   const [users, setUsers] = useState([]);
+  const [name, setName] = useState("");
+
   const getUser = async () => {
-    const data = await axios.get("/user");
+    const { data } = await axios.get("/user");
     setUsers(data);
   };
-  // const postUser = async ()=>{
-  //   const data = await axios.get("/http://192.168.0.14:5000/user");
-  //   setUsers(data)
-  // }
+  const postUser = async () => {
+    const { status } = await axios.post("/user", { name });
+    if (status === 200) {
+      alert("ok");
+      setName("");
+    } else {
+      alert("err");
+    }
+  };
+
   return (
     <div className="App">
       <h2>linux</h2>
@@ -26,6 +34,8 @@ function App() {
       >
         getUsers
       </button>
+      <button onClick={postUser}>postUsers</button>
+      <input onChange={(e) => setName(e.target.value)} value={name}></input>
       {users.map((el) => (
         <PrintMyName name={el.name}></PrintMyName>
       ))}
