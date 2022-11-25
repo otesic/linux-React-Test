@@ -6,7 +6,8 @@ function App() {
   return (
     <div className="App">
       <h2>linux</h2>
-      <PrintMyName></PrintMyName>
+      <PrintMyName name="박철련"></PrintMyName>
+      <PrintMyName name="박철련2"></PrintMyName>
     </div>
   );
 }
