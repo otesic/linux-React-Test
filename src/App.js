@@ -26,9 +26,9 @@ function App() {
       >
         getUsers
       </button>
-      {users.map((el) => {
-        <PrintMyName name={el.name}></PrintMyName>;
-      })}
+      {users.map((el) => (
+        <PrintMyName name={el.name}></PrintMyName>
+      ))}
     </div>
   );
 }
